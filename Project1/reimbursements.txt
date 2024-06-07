@@ -1,3 +1,0 @@
-type, travel limit, mobile limit
-c,    50000,        6000
-s,    10000,        6000
