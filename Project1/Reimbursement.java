@@ -26,6 +26,11 @@ public class Reimbursement
         System.out.println(c_limit_mobile);
     }
     
+    public int getSalary_Travel_Limit()     {return s_limit_travel;}
+    public int getSalary_Mobile_Limit()     {return s_limit_mobile;}
+    public int getCommision_Travel_Limit()  {return c_limit_travel;}
+    public int getCommision_Mobile_Limit()  {return c_limit_mobile;}
+    
     static 
     {   
         Boolean file_failure = false;
@@ -36,7 +41,8 @@ public class Reimbursement
         {
             try (
                 Scanner fscan = new Scanner(new File("src/main/java/Project1/" + fileName));
-            ){
+            ){  
+                System.out.println("Read from " + new File("src/main/java/Project1/" + fileName).getPath());
                 fscan.nextLine();
                 file_failure = true;
                 String l = fscan.nextLine();

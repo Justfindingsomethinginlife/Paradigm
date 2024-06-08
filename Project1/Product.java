@@ -106,6 +106,7 @@ class ProductList
             try
             {
                 File fp = new File("src/main/java/Project1/" + filename);
+                System.out.println("Read from " + fp.getPath());
                 fscan = new Scanner(fp);
                 fscan.nextLine();
                 file_failure = true;
