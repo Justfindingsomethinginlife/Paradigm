@@ -18,10 +18,6 @@ public class Reimbursement
     
     private static final int s_limit_travel, s_limit_mobile, c_limit_travel, c_limit_mobile;    
     
-    public static void testvalue()
-    {
-        
-    }
     
     public static int getSalary_Travel_Limit()     {return s_limit_travel;}
     public static int getSalary_Mobile_Limit()     {return s_limit_mobile;}
