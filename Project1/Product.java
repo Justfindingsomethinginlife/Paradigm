@@ -76,8 +76,6 @@ class ProductList
         
         while(fscan.hasNext())
         {
-            try
-            {
                 file_failure = true;
                 String line = fscan.nextLine();
                 String [] col = line.split(",");
@@ -89,11 +87,6 @@ class ProductList
                         temp.setQ4( Integer.parseInt(col[7].trim()) );
                 
                 products.add(temp);
-            }
-            catch(Exception e)
-            {   
-                e.printStackTrace();
-            }
         }
         fscan.close();
     }
@@ -127,8 +120,6 @@ class ProductList
         
         while(fscan.hasNext())
         {
-            try
-            {
                 file_failure = true;
                 String line = fscan.nextLine();
                 String [] col = line.split(",");
@@ -140,11 +131,6 @@ class ProductList
                         temp.setQ4( Integer.parseInt(col[7].trim()) );
                 
                 products.add(temp);
-            }
-            catch(Exception e)
-            {   
-                e.printStackTrace();
-            }
         }
         fscan.close();
     }

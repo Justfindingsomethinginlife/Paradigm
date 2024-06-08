@@ -27,6 +27,8 @@ class SalesPersonList
 {
     private ArrayList<SalesPerson> SalesPersonList = new ArrayList<>();
     
+    public ArrayList<SalesPerson> getSalesList()    {return SalesPersonList;}
+    
     private Boolean check(ProductList products, String code) //Should be implimented with Trie for a large dataset
     {   
         ArrayList<Product> product = products.getProductList();
@@ -50,13 +52,13 @@ class SalesPersonList
     {
         String [] col = l.split(",");
                 
-            if(!(col[0].trim().equals("s") || col[0].trim().equals("c")))throw new InvalidFormatException("For input: \"" + col[0].trim() + "\"");
-            else if(!check(products, col[2].trim()))throw new InvalidFormatException("For input: \"" + col[2].trim() + "\"");
-            else if(Integer.parseInt(col[3].trim()) < 0)throw new InvalidFormatException("For input: \"" + col[3].trim() + "\"");
-            else if(Integer.parseInt(col[4].trim()) < 0)throw new InvalidFormatException("For input: \"" + col[4].trim() + "\"");
-            else if(Integer.parseInt(col[5].trim()) < 0)throw new InvalidFormatException("For input: \"" + col[5].trim() + "\"");
-            else if(Integer.parseInt(col[6].trim()) < 0)throw new InvalidFormatException("For input: \"" + col[6].trim() + "\"");
-            else if(col[0].trim().equals("s"))if(Integer.parseInt(col[7].trim()) < 0)throw new InvalidFormatException("For input: \"" + col[7].trim() + "\"");
+            if(!(col[0].trim().equals("s") || col[0].trim().equals("c")))               throw new InvalidFormatException("For input: \"" + col[0].trim() + "\"");
+            else if(!check(products, col[2].trim()))                                    throw new InvalidFormatException("For input: \"" + col[2].trim() + "\"");
+            else if(Integer.parseInt(col[3].trim()) < 0)                                throw new InvalidFormatException("For input: \"" + col[3].trim() + "\"");
+            else if(Integer.parseInt(col[4].trim()) < 0)                                throw new InvalidFormatException("For input: \"" + col[4].trim() + "\"");
+            else if(Integer.parseInt(col[5].trim()) < 0)                                throw new InvalidFormatException("For input: \"" + col[5].trim() + "\"");
+            else if(Integer.parseInt(col[6].trim()) < 0)                                throw new InvalidFormatException("For input: \"" + col[6].trim() + "\"");
+            else if(col[0].trim().equals("s"))if(Integer.parseInt(col[7].trim()) < 0)   throw new InvalidFormatException("For input: \"" + col[7].trim() + "\"");
             
             if(col[0].trim().equals("s"))
             {
@@ -91,21 +93,18 @@ class SalesPersonList
         }
     }
     
-    public void parseSales(String path, SalesPersonList Sales, ProductList products)    //more efficient with Trie for large number of sales persons or Product reduce to O(k) k be length of name needed
+    public SalesPersonList(String path,String sales_file,String expenses_file, ProductList products)
     {
-        Boolean file_failure=false;
+         Boolean file_failure=false;
         
         Scanner fscan = null;
         Scanner keyboard = new Scanner(System.in);
-        
-        String expense_file = "expenses.txt";
-        String filename = "salespersons_errors.txt";
-        
+                
         while(!file_failure)
         {
             try
             {
-                File fp = new File("src/main/java/Project1/" + filename);
+                File fp = new File(path + sales_file);
                 System.out.println("Read from " + fp.getPath());
                 fscan = new Scanner(fp);
                 fscan.nextLine();
@@ -115,7 +114,7 @@ class SalesPersonList
             {
                 System.out.println(e);
                 System.out.println("New file name = ");
-                filename = keyboard.nextLine();
+                sales_file = keyboard.nextLine();
             }
             catch(Exception e2)
             {
@@ -143,7 +142,7 @@ class SalesPersonList
         {
             try
             {
-                File fp = new File("src/main/java/Project1/" + expense_file);
+                File fp = new File(path + expenses_file);
                 System.out.println("Read from " + fp.getPath());
                 fscan = new Scanner(fp);
                 fscan.nextLine();
@@ -153,7 +152,92 @@ class SalesPersonList
             {
                 System.out.println(e);
                 System.out.println("New file name = ");
-                filename = keyboard.nextLine();
+                expenses_file = keyboard.nextLine();
+            }
+            catch(Exception e2)
+            {
+                System.out.println(e2 + " is an EXCEPTION NOT INCLUDED IN THIS HANDLING\n");
+            }
+        }
+        while(fscan.hasNext())
+        {
+                String l = fscan.nextLine();
+                String [] col = l.split(",");
+                int person_index = sales_exist(col[0].trim());
+                if( person_index == -1)
+                {   
+                    System.out.printf("%s   >>   not exist\n",l);
+                }
+                else
+                {
+                    System.out.printf("%s   >>   total = %7s %7s\n",l,String.format("%,d", Integer.valueOf(col[1].trim())) +",",String.format("%,d", Integer.valueOf(col[2].trim())));
+                    SalesPersonList.get(person_index).setMobile(Integer.parseInt(col[2].trim()));
+                    SalesPersonList.get(person_index).setTravel(Integer.parseInt(col[1].trim()));
+                }                
+        }
+        fscan.close();
+    }
+    
+    public SalesPersonList(String sales_file,String expenses_file, ProductList products)
+    {
+        Boolean file_failure=false;
+        
+        Scanner fscan = null;
+        Scanner keyboard = new Scanner(System.in);
+                
+        while(!file_failure)
+        {
+            try
+            {
+                File fp = new File("src/main/java/Project1/" + sales_file);
+                System.out.println("Read from " + fp.getPath());
+                fscan = new Scanner(fp);
+                fscan.nextLine();
+                file_failure = true;
+            }
+            catch(FileNotFoundException e)
+            {
+                System.out.println(e);
+                System.out.println("New file name = ");
+                sales_file = keyboard.nextLine();
+            }
+            catch(Exception e2)
+            {
+                System.out.println(e2 + " is an EXCEPTION NOT INCLUDED IN THIS HANDLING\n");
+            }
+        }
+        String uni=null;
+        while(fscan.hasNext())
+        {
+            try
+            {
+                String l = fscan.nextLine();uni=l;
+                ProcessLine(l,products);   
+            }
+            catch(Exception e)
+            {   
+                System.err.println(e);
+                System.err.println("[" + uni +  "] " + " --> " + "skip this line " + "\n");
+            }
+        }
+        fscan.close();
+        file_failure=false;
+        
+        while(!file_failure)
+        {
+            try
+            {
+                File fp = new File("src/main/java/Project1/" + expenses_file);
+                System.out.println("Read from " + fp.getPath());
+                fscan = new Scanner(fp);
+                fscan.nextLine();
+                file_failure = true;
+            }
+            catch(FileNotFoundException e)
+            {
+                System.out.println(e);
+                System.out.println("New file name = ");
+                expenses_file = keyboard.nextLine();
             }
             catch(Exception e2)
             {
@@ -177,8 +261,7 @@ class SalesPersonList
                 }                
         }
         fscan.close();
-        
-    };
+    }
 }
 
 class SalesPerson 
@@ -209,8 +292,6 @@ class SalesPerson
     public int getSalary()                                          {return salary;}
     public int getTravel()                                          {return travel;}
     public int getMobile()                                          {return mobile;}
-
-    
 }
 
 public class Functional {
@@ -222,8 +303,8 @@ public class Functional {
         Reimbursement.testvalue();
         ProductList products = new ProductList("products.txt");
         
-        SalesPersonList sales = new SalesPersonList();
-        sales.parseSales(" ", sales, products);
+        SalesPersonList sales = new SalesPersonList("salespersons_error.txt","expenses.txt",products);
+
         sales.DisplaySales();
         //products.DisplayProduct();
 
