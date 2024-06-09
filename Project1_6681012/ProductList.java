@@ -13,10 +13,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-/**
- *
- * @author ACER
- */
+
 public class ProductList //DEPRECATED not up to requirement
 {   
     private String path="src/main/java/Project1_6681012/", filename=null; //Project1 should be change to Project1_XXX

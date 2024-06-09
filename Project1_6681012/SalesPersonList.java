@@ -1,6 +1,6 @@
 /*
-
 Gael Daengsangwan 6580591
+Karndanai Udomsiriphocksai 6481324
 Kasidech Thongking 6681012
 Patrapee Maleevech 6580074
 Thanapoom Tanalakwong 6481205
@@ -13,10 +13,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-/**
- *
- * @author ACER
- */
+
 public class SalesPersonList //DEPRECATED not up to requirement
 {
     private ArrayList<SalesPerson> SalesPersonList = new ArrayList<>();

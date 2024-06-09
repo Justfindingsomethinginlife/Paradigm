@@ -1,17 +1,17 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+Gael Daengsangwan 6580591
+Karndanai Udomsiriphocksai 6481324
+Kasidech Thongking 6681012
+Patrapee Maleevech 6580074
+Thanapoom Tanalakwong 6481205
+*/
 package Project1_6681012;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-/**
- *
- * @author ACER
- */
+
 public class Reimbursement
 {
     private static String fileName = "reimbursements.txt", path="src/main/java/Project1_6681012/";

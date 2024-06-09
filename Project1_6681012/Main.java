@@ -1,6 +1,6 @@
 /*
-
 Gael Daengsangwan 6580591
+Karndanai Udomsiriphocksai 6481324
 Kasidech Thongking 6681012
 Patrapee Maleevech 6580074
 Thanapoom Tanalakwong 6481205
@@ -17,10 +17,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-/**
- *
- * @author ACER
- */
+
 public class Main {
 
     /**
@@ -31,7 +28,7 @@ public class Main {
         
         Reimbursement re = new Reimbursement(); //read reimbursements data from reimbursements.txt 
         
-        ArrayList<SalesPerson> sales = parseSales("src/main/java/Project1_6681012/","salespersons_errors.txt","expenses.txt",products); //read salespersons and expenses data from salespersons_errors.txt and expenses.txt 
+        ArrayList<SalesPerson> sales = parseSales("src/main/java/Project1_6681012/","salespersons_errors.txt","expense.txt",products); //read salespersons and expenses data from salespersons_errors.txt and expenses.txt 
         
         //Sales Payment Info
         System.out.println("=".repeat(10) + " Process Payments " + "=".repeat(10) + "\n");
