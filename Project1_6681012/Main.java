@@ -24,11 +24,11 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {     
-        ArrayList<Product> products = parseProduct("src/main/java/Project1_6681012/","products.txt"); //read products data from products.txt 
+        ArrayList<Product> products = parseProduct("src/main/java/Project1_6681012/","product.txt"); //read products data from products.txt 
         
         Reimbursement re = new Reimbursement(); //read reimbursements data from reimbursements.txt 
         
-        ArrayList<SalesPerson> sales = parseSales("src/main/java/Project1_6681012/","salespersons_errors.txt","expense.txt",products); //read salespersons and expenses data from salespersons_errors.txt and expenses.txt 
+        ArrayList<SalesPerson> sales = parseSales("src/main/java/Project1_6681012/","salespersons_error.txt","expense.txt",products); //read salespersons and expenses data from salespersons_errors.txt and expenses.txt 
         
         //Sales Payment Info
         System.out.println("=".repeat(10) + " Process Payments " + "=".repeat(10) + "\n");
@@ -57,8 +57,9 @@ public class Main {
         
         SalesPersonList sales = new SalesPersonList("src/main/java/Project1_6681012/","salespersons_errors.txt","expenses.txt",products);
         
-        sales.DisplayPaymentInfo(products, re);
-        products.SummarizeList(sales);
+        sales.DisplayPaymentInfo(products, re); //Sales Payment Info
+        
+        products.SummarizeList(sales); //Summarizing Product
     }
     
     private static ArrayList<Product> parseProduct(String path, String filename)                         
