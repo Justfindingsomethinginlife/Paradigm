@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 public class Reimbursement
 {
-    private static String fileName = "reimbursements.txt", path="src/main/java/Project1/";
+    private static String fileName = "reimbursements.txt", path="src/main/java/Project1_6681012/";
     
     private static final int s_limit_travel, s_limit_mobile, c_limit_travel, c_limit_mobile;    
     
@@ -24,8 +24,9 @@ public class Reimbursement
     public static int getCommision_Travel_Limit()  {return c_limit_travel;}
     public static int getCommision_Mobile_Limit()  {return c_limit_mobile;}
     
-    static 
+    static
     {   
+        
         Boolean file_failure = false;
         Scanner key = new Scanner(System.in);
         int [] temp = new int[4];
@@ -33,9 +34,9 @@ public class Reimbursement
         while (!file_failure)
         {
             try (
-                Scanner fscan = new Scanner(new File("src/main/java/Project1_6681012/" + fileName));
+                Scanner fscan = new Scanner(new File(path + fileName));
             ){  
-                System.out.println("Read from " + new File("src/main/java/Project1_6681012/" + fileName).getPath());
+                System.out.println("Read from " + new File(path + fileName).getPath());
                 fscan.nextLine();
                 file_failure = true;
                 String l = fscan.nextLine();
