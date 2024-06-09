@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class Product implements Comparable<Product>
 {
     private String code, name;
-    private int unit_price, flat_comm, q1, q2, q3, q4, sales;
+    private int unit_price, flat_comm, q1, q2, q3, q4, sales=0;
     
     public Product(String code, String name, int unit_price)             {this.code=code;this.name=name;this.unit_price = unit_price;}
 
@@ -66,8 +66,8 @@ public class Product implements Comparable<Product>
     @Override
     public int compareTo(Product other) 
     {
-        if(this.sales*this.unit_price > other.sales*other.unit_price)return -1;
-        else if(this.sales*this.unit_price < other.sales*other.unit_price)return 1;
+        if(this.sales > other.sales)return -1;
+        else if(this.sales < other.sales)return 1;
         return 0;
     }
 }

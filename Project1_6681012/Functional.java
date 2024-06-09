@@ -19,18 +19,13 @@ public class Functional {
      */
     public static void main(String[] args) {
         
-        ProductList products = new ProductList("src/main/java/Project1_6681012/","product.txt");
+        ProductList products = new ProductList("src/main/java/Project1_6681012/","products.txt");
         
         Reimbursement re = new Reimbursement();
         
-        SalesPersonList sales = new SalesPersonList("src/main/java/Project1_6681012/","salespersons_error.txt","expense.txt",products);
+        SalesPersonList sales = new SalesPersonList("src/main/java/Project1_6681012/","salespersons.txt","expenses.txt",products);
         sales.DisplayPaymentInfo(products, re);
         products.SummarizeList(sales);
-
-        
-        
-        
-    
     }
     
 }
