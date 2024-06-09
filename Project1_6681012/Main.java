@@ -49,7 +49,7 @@ public class Main {
         System.out.println();   
     }
     
-    public void demo_with_external_classes() //Demo using ProductList and SalesPersonList which are just like implementation in main() but already wrapped
+    public void demo_with_external_classes() //Demo using ProductList and SalesPersonList which are just like implementation in main() but already implemented some builtin function
     {
         ProductList products = new ProductList("src/main/java/Project1_6681012/","products.txt");
          
